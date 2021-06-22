@@ -1,0 +1,127 @@
+<p>home works!</p>
+<main>
+    <section class="header">
+      <h1>Find Great Recipes</h1>
+    </section>
+    <section class="input">
+      <h2>Search </h2>
+      <!-- Search by ingredients -->
+      <input
+        type="text"
+        *ngIf="change"
+        class="form-control"
+        id="ingredients"
+        placeholder="Enter some ingredients"
+        [(ngModel)]="ingredients"/>
+  
+  <!-- Search by name of food -->
+      <input
+        type="text"
+        *ngIf="!change"
+        class="form-control"
+        id="main"
+        placeholder="Enter the name of a food e,g, Burger, Pizza, Pie"
+        [(ngModel)]="main"/>
+  
+        <!-- Exclude ingredients -->
+        <input
+        type="text"
+        class="form-control"
+        id="exclude"
+        *ngIf="ext"
+        placeholder="Excluded ingredients e,g coconut,apple"
+        [(ngModel)]="exclude"/>
+  
+        <!-- Diet -->
+        <select *ngIf="ext" class="form-control custom-select" id="diet" [(ngModel)]="diet">
+          <option></option>
+          <option>vegetarian</option>
+          <option>vegan</option>
+        </select>
+  
+        <!-- Intolerances -->
+        <select *ngIf="ext" class="form-control custom-select" id="intol" [(ngModel)]="intol">
+          <option></option>
+          <option>Egg</option>
+          <option>Gluten</option>
+          <option>Dairy</option>
+          <option>Wheat</option>
+          <option>Peanut</option>
+          <option>Sesame</option>
+          <option>Seafood</option>
+          <option>Shellfish</option>
+          <option>Soy</option>
+          <option>Sulfite</option>
+          <option>Tree nut</option>
+        </select>
+  
+        <!-- number of search -->
+      <select  class="form-control" id="num" [(ngModel)]="number">
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+        <option>13</option>
+        <option>14</option>
+        <option>15</option>
+        <option>16</option>
+        <option>17</option>
+        <option>18</option>
+        <option>19</option>
+        <option>20</option>
+      </select>
+  
+      
+  
+      
+      <button
+        (click)="getByIngredients()"
+        *ngIf="change"
+        type="button"
+        class="btn btn-success"
+        [disabled]="!ingredients"
+      >
+        Submit
+      </button>
+      <button
+        (click)="getBySearch()"
+        *ngIf="!change"
+        type="button"
+        class="btn btn-success"
+        [disabled]="!main"
+      >
+        Submit
+      </button>
+      <button
+        (click)="changeSearch()"
+        *ngIf="change"
+        type="button"
+        class="btn btn-primary btn-sm ml-3"
+      >
+        Search by recipe
+      </button>
+      <button
+        (click)="changeSearch()"
+        *ngIf="!change"
+        type="button"
+        class="btn btn-primary btn-sm ml-3"
+      >
+        Search by ingredients
+      </button>
+      <button
+        (click)="extra()"
+        *ngIf="!ext && !change"
+        type="button"
+        class="btn btn-dark btn-sm ml-3"
+        id="extraButton"
+      >
+        Extra requirements
+      </button>
+    </section>
+    <section class="cards"></section>
+  </main>
+  

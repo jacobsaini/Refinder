@@ -1,0 +1,41 @@
+main{
+    height:100%;
+    width:100%;
+}
+
+.header {
+    background: url(../../../assets/images/background.jpg);
+    position: relative;
+    background-size: cover;
+    border-radius: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:40vh;
+}
+.header > h1 {
+    color:white;
+}
+
+.input{
+    display:flex;
+    flex-direction: column;
+    padding:2%;
+}
+
+.input > input {
+    font-size:14px;
+    
+}
+
+.input > * {
+    margin-bottom:2%;
+}
+
+#num{
+    width:30%;
+}
+
+.input > h2 {
+    margin-bottom:2%;
+}
