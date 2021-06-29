@@ -1,34 +1,27 @@
-<div class="container mt-3">
-    <div class="loader" *ngIf="loading"></div>
-    <div *ngIf="!loading">
-    <div id="cont" *ngFor="let recipes of recipe">
-     
-            <h5 id="title" >{{recipes.title}}</h5>
-            <div class="row">
-                <div class="col-6 " id="mobileImg">
-                    <img id="image" src="{{recipes.image}}" alt="Card image cap">             
-                </div>
-                <div class="col-6" id="mobileText">
-                    <div class="row">
-                        <div class="col">
-                            <div class="Listbtn">
-                                <button class="btn btn-light" [disabled]=" instructionsChange" id="btnInstructions" (click)="changeToInstruction()">Instructions</button>
-                                <button class="btn btn-light" [disabled]=" ingredientsChange" id="btnIngredients" (click)="changeToIngredients()">Ingredients</button>
-                                <button class="btn btn-light" [disabled]=" extrasChange" id="btnExtra" (click)="changeToExtra()">Summary</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <ngx-simplebar id="text-bg" [options]="options">
-                        <div *ngFor="let number of numbers">
-                            <p id="text" style="white-space: pre-line;" *ngIf="instructionsChange">{{recipes.instructions}}</p>
-                            <p id="text" style="white-space: pre-line;" *ngIf="ingredientsChange" ><span *ngFor="let ingredient of recipes.extendedIngredients">{{ingredient.originalString}} <br/></span></p>
-                            <p id="text" style="white-space: pre-line;" *ngIf="extrasChange" ><span innerHTML="{{recipes.summary}}"></span></p>
-                         </div>
-                        
-                    </ngx-simplebar>
-            </div>
+<main>
+  <div class="loader" *ngIf="loading"></div>
+  <div  *ngIf="!loading"class="desktop"></div>
+  <section class="recipe" *ngIf="!loading">
+    <article *ngFor="let details of recipe">
+      <h1>{{ details.title }}</h1>
+      <span class="img-wrapper">
+        <img src="{{ details.image }}" alt="img" srcset="" />
+      </span>
+      <section class="text">
+        <h2>Ingredients</h2>
+        <div
+          class="ingredients"
+          *ngFor="let ingredients of details.extendedIngredients"
+        >
+          <p id="text">{{ ingredients.originalString }}</p>
         </div>
-    </div>
-</div>
-</div>
+        <hr />
+        <h2>Instructions</h2>
+        <div *ngFor="let step of instructions.steps">
+          <h3>Step {{ step.number }}</h3>
+          <p id="text">{{ step.step }}</p>
+        </div>
+      </section>
+    </article>
+  </section>
+</main>

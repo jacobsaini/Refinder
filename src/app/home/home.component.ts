@@ -1,16 +1,15 @@
 import { RecipeService } from '../services/recipe-service.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy,HostListener } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { LoadingAnimService } from '../services/loading.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { debounceTime } from 'rxjs/operators';
 
-import { trigger, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
+  templateUrl: '/home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
@@ -19,13 +18,22 @@ export class HomeComponent implements OnInit, OnDestroy {
   loadingSub: Subscription;
   loading: boolean = false;
   change: boolean = false;
-  animationTrigger: boolean = false;
   ext: boolean = false;
   onclick: boolean = false;
+  check:boolean = false;
   ingreServ: boolean;
   ingredients: String;
   main: String;
   number: number = 20;
+  isSticky:boolean = false;
+
+  @HostListener('window:scroll', ['$event'])
+  checkScroll() {
+    this.isSticky = window.pageYOffset >= 450;
+  
+    
+  }
+
   
   recipes: any;
   diet: any = '';
@@ -47,7 +55,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   getByIngredients() {
-    
+    this.check = true;
     this.recipeService
       .getByIngredient(this.ingredients, this.number)
       .pipe(takeUntil(this.unsub))
@@ -55,9 +63,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.ingredients = '';
         this.loading = true;
         this.recipes = recipes;
-      
         this.ingreServ = true;
-        this.animationTrigger = !this.animationTrigger;
+      
       }, (error) => {
       this.error = error.error
       console.log(error.error)
@@ -66,7 +73,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   getBySearch() {
-    console.log(this.main);
+    this.check = true;
+    
     this.recipeService
       .getBySearch(this.main, this.number, this.diet, this.intol, this.exclude)
       .pipe(takeUntil(this.unsub))
@@ -75,7 +83,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.main = '';
         this.loading = true;
         this.recipes = recipes;
-        this.animationTrigger = !this.animationTrigger;
+
       },
     (error) => {
       this.error = error.error

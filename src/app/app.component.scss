@@ -1,0 +1,47 @@
+$primary-color:#161a1d;
+$secondary-color:#a4161a;
+
+header {
+    nav{
+        display: flex;
+        flex-direction: row;
+        padding:5%;
+        background-color:#161a1d;
+       
+        a{
+            text-decoration: none;
+            color:white;
+            transition: color 0.6s ease;
+
+            &:hover {
+                color:$secondary-color;
+            }
+        }
+    }
+}
+
+footer {
+    padding:10%;
+    background-color:#161a1d;
+}
+
+
+@media (min-width:768px){
+    header {
+        nav{
+            padding:3%;
+        }
+    }
+    
+   
+}
+
+
+@media (min-width:1024px){
+    header {
+        nav{
+            padding:2%;
+        }
+    }
+    
+}

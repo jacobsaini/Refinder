@@ -17,21 +17,11 @@ import { LoadingAnimService } from '../services/loading.service';
 })
 export class DetailsComponent implements OnInit,OnDestroy {
   private unsub: Subject<any> = new Subject();
-
   recipe:any = [{}];
-
-  options = { autoHide: false, scrollbarMinSize: 40, scrollbarMaxSize: 60 };
- 
-  numbers = Array(1).fill(0);
- 
-  instructionsChange: boolean = true;
-  ingredientsChange: boolean = false;
-  extrasChange: boolean = false;
-  loading: boolean = false;
-
+  loaded:boolean = false;
+  loading: any;
   loadingSub: Subscription;
-
-
+  instructions:any = [{}];
   constructor(  
     private recipeService: RecipeService,
     private loadingScreenServ: LoadingAnimService,   
@@ -46,7 +36,6 @@ export class DetailsComponent implements OnInit,OnDestroy {
       this.loading = value;
     });
     this.getRecipe(this.route.snapshot.paramMap.get('id'));
-
   }
 
   getRecipe(id){
@@ -54,26 +43,9 @@ export class DetailsComponent implements OnInit,OnDestroy {
     .pipe(takeUntil(this.unsub))
     .subscribe(
       (recipe) => {
-        this.loading = true;
-        this.recipe = [recipe];
-        console.log(recipe)
+        this.recipe = recipe; 
+        this.instructions = recipe[0].analyzedInstructions[0]
       })
-  }
-
-  changeToIngredients(){
-    this.instructionsChange = false;
-    this.ingredientsChange = !this.ingredientsChange;
-    this.extrasChange = false;
-  }
-  changeToExtra(){
-    this.extrasChange = !this.extrasChange;
-    this.instructionsChange = false;
-    this.ingredientsChange = false;
-  }
-  changeToInstruction(){
-    this.extrasChange = false;
-    this.ingredientsChange = false;
-    this.instructionsChange = !this.instructionsChange;
   }
 
   ngOnDestroy(){
