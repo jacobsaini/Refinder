@@ -5,7 +5,8 @@ A food recipe finder with Angular.
 ## General info
 
 The front-end of a food recipe finder
-![Poster](Poster.png)
+
+![Poster](./Poster.PNG)
 
 ## Technologies
 Created with:
