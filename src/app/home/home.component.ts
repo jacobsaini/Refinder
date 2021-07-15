@@ -5,12 +5,23 @@ import { LoadingAnimService } from '../services/loading.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { debounceTime } from 'rxjs/operators';
+import { trigger, state, style, animate, transition } from '@angular/animations';
+
 
 
 @Component({
   selector: 'app-home',
   templateUrl: '/home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  animations: [
+    trigger('fadein', 
+      [
+        transition(':enter', [
+            style({opacity: 0 }),
+            animate('0.7s ease-out', 
+              style({opacity: 1 }))
+          ])
+      ])]
 })
 export class HomeComponent implements OnInit, OnDestroy {
   private unsub: Subject<any> = new Subject();
@@ -66,8 +77,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.ingreServ = true;
       
       }, (error) => {
-      this.error = error.error
-      console.log(error.error)
+      this.error = "Something went wrong with the server"
+      
     }
     );
   }
@@ -86,8 +97,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
       },
     (error) => {
-      this.error = error.error
-      console.log(error.error)
+      this.error = "Something went wrong with the server"
+      
     }
       );
     }

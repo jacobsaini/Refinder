@@ -1,9 +1,16 @@
+
 <main>
+  
   <div class="loader" *ngIf="loading"></div>
-  <div  *ngIf="!loading"class="desktop"></div>
-  <section class="recipe" *ngIf="!loading">
+  <div *ngIf="!loading"class="desktop" [@fadein]>
+    <div id="icon-container" [ngClass]="{ fixed: isSticky }" >
+        <i routerLink="/home" class="fas fa-arrow-left"></i>
+    </div>
+</div>
+
+  <section class="recipe" *ngIf="!loading" [@fadein]>
     <article *ngFor="let details of recipe">
-      <h1>{{ details.title }}</h1>
+      <h1>{{ details.title }} </h1>
       <span class="img-wrapper">
         <img src="{{ details.image }}" alt="img" srcset="" />
       </span>
@@ -15,7 +22,7 @@
         >
           <p id="text">{{ ingredients.originalString }}</p>
         </div>
-        <hr />
+        <hr id="breakline" />
         <h2>Instructions</h2>
         <div *ngFor="let step of instructions.steps">
           <h3>Step {{ step.number }}</h3>

@@ -23,7 +23,16 @@ header {
 footer {
     padding:10%;
     background-color:#161a1d;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        height: auto;
+        width:15%;
+    }
 }
+
+
 
 
 @media (min-width:768px){

@@ -12,6 +12,7 @@
           required=""
           type="text"
           *ngIf="change"
+          [@fadein]
           placeholder="Enter some ingredients"
           [(ngModel)]="ingredients"
         />
@@ -21,6 +22,7 @@
           type="text"
           required=""
           *ngIf="!change"
+          [@fadein]
           placeholder="Enter the name of a food e,g, Burger, Pizza, Pie"
           [(ngModel)]="main"
         />
@@ -31,6 +33,7 @@
           required=""
           id="exclude"
           *ngIf="ext"
+          [@fadein]
           placeholder="Excluded ingredients e,g coconut,apple"
           [(ngModel)]="exclude"
         />
@@ -40,6 +43,7 @@
           *ngIf="ext"
           id="diet"
           [(ngModel)]="diet"
+          [@fadein]
         >
           <option id="selected" selected value="">Diet</option>
           <option>vegetarian</option>
@@ -52,6 +56,7 @@
           class="form-control custom-select"
           id="intol"
           [(ngModel)]="intol"
+          [@fadein]
         >
           <option class="selected" selected value="" >Intolerances</option>
           <option>Egg</option>
@@ -137,7 +142,8 @@
       <hr />
       <div class="loader" *ngIf="loading"></div>
       <h1 *ngIf="!check">Search for a recipe to get started.</h1>
-      <article class="card" *ngFor="let recipe of recipes">
+      <h1 *ngIf="error">{{error}}</h1>
+      <article class="card" [@fadein] *ngFor="let recipe of recipes">
         <img class="card-img-top recipeImg" *ngIf="ingreServ"  src="{{ recipe.image }}" />
           <img class="card-img-top recipeImg" *ngIf="!ingreServ" src="https://spoonacular.com/recipeImages/{{ recipe.image }}" />
         <div class="card-body">
