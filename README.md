@@ -6,7 +6,7 @@ A food recipe finder with Angular.
 
 The front-end of a food recipe finder
 
-Backend at:https://github.com/Gummy21/Refinder-api
+Back-end at: https://github.com/Gummy21/Refinder-api
 
 ![Poster](./Poster.PNG)
 
