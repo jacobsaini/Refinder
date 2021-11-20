@@ -32,7 +32,7 @@ main{
         align-items:center;
         
         button{
-            padding:2%;
+            padding:3%;
             border:none;
             background-color:$secondary-color;
             color:white;
@@ -57,6 +57,7 @@ main{
         h2{
             letter-spacing:4px;
             margin:4% 0;
+            font-size:2em;
         }
 
         input{
@@ -125,6 +126,7 @@ main{
         h1{
             color:$primary-color;
             margin-bottom:50%;
+            line-height:1.5em;
         }
         hr {
             margin-bottom:5%;
@@ -163,11 +165,16 @@ main{
                     padding:4.5%;
                     border:none;
                     cursor: pointer;
+                    transition: all 0.4s ease;
+                    &:hover {
+                        background-color:#262d31;
+                    }
+                    }
                 }
             }
         }
     }
-}
+
 
 
 @media (min-width:768px){
@@ -223,9 +230,13 @@ main{
 }
 
 @media (min-width:1024px){
+
+    .loader {
+        margin-left:50% !important;
+    }
     main {
         .header {
-            height: 50vh;
+            height: 60vh;
         }
         .input{
             width:30%;
@@ -279,6 +290,7 @@ main{
 }
 
 .loader {
+    
     width: 60px;
     height: 60px;
     background: rgb(250, 245, 245, 0.3);
@@ -287,7 +299,7 @@ main{
     border-left-color: $secondary-color;
     border-radius: 50%;
     animation: loader .75s 10 ease forwards;
-    margin-left:45%;
+    margin-left:37%;
     margin-bottom: 10%;
     margin-top: 5em;
    

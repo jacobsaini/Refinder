@@ -5,6 +5,9 @@ main {
   .desktop {
     display: none;
   }
+  #header-breakline {
+    margin: 5% 0;
+  }
   .recipe {
     article {
       padding: 4%;
@@ -14,7 +17,9 @@ main {
       }
 
       h1 {
-        font-size: 1.5em;
+        margin-top:0.5em;
+        font-size: 2.3em;
+        letter-spacing:0.1em;
       }
       img {
         width: 100%;
@@ -26,22 +31,35 @@ main {
         display: flex;
         flex-direction: column;
 
-        hr {
-          margin: 20% 0;
-        }
+       hr {
+        margin:15% 0;
+       }
       }
     }
   }
 }
 
 @media (min-width: 768px) {
+  .loader {
+    margin-left:45% !important;
+  }
   main {
     .recipe {
       article {
         padding: 2% 8% 2% 4%;
 
+        .img-wrapper {
+          display: flex;
+          justify-content: center;
+          margin-bottom:5%;
+          img {
+            width:60%;
+            
+          }
+        }
+        
         h1 {
-          font-size: 2em;
+          font-size: 2.4em;
         }
         .text{
           padding: 0 0 10% 0;
@@ -55,6 +73,9 @@ main {
 }
 
 @media (min-width: 1024px) {
+  .loader {
+    margin-left:45% !important;
+  }
   main {
 
     display: flex;
@@ -62,13 +83,15 @@ main {
     .desktop{
       display: block;
       padding:2%;
-      width:20%;
+      width:15%;
       background-color:$primary-color;
       .fixed {
         position:sticky;
         top:50px;
-    }
-      i {
+      }
+      #icon-container {
+        padding-top:3em;
+        i {
           font-size:2em;
           background-color:#272c30;
           color:white;
@@ -81,15 +104,25 @@ main {
           }
         }
       }
+      
+      }
     
     .recipe {
       width:80%;
       article {
         padding: 4% 8%;
-
+        h1 {
+          font-size:2.6em;
+        }
         .img-wrapper {
-          display: block;
-          padding: 0 30% 20% 0;
+          display: flex;
+          padding: 2% 0;
+
+          img {
+            width:60%;
+            height:auto;
+
+          }
         }
 
         .text {
@@ -111,7 +144,7 @@ main {
   border-left-color: #f56;
   border-radius: 50%;
   animation: loader 0.75s infinite ease forwards;
-  margin-left: 45%;
+  margin-left: 38%;
   margin-top: 10%;
   margin-bottom: 100vh;
 }
